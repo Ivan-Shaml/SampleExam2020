@@ -9,11 +9,17 @@ namespace SampleExam2020.Data
 {
     public class StudentsDbContext : DbContext
     {
-        
-        public StudentsDbContext(DbContextOptions<StudentsDbContext> options) : base(options)
-        {
-
-        }
         public DbSet<Student> Students { get; set; }
+        
+        public StudentsDbContext()
+        {
+            Students = this.Set<Student>();
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer("Server = localhost; Database = Sample1;Trusted_connection=True;MultipleActiveResultSets=true");
+        }
+
     }
 }

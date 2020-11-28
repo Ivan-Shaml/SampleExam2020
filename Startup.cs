@@ -25,8 +25,6 @@ namespace SampleExam2020
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddDbContext<StudentsDbContext>(options =>
-            options.UseSqlServer("Server = localhost; Database = Sample1;Trusted_connection=True;MultipleActiveResultSets=true"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
