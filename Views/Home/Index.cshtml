@@ -1,0 +1,60 @@
+﻿@model ListStudentsVM
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<p>
+    <a asp-action="Create">New</a>
+</p>
+
+@if (Model.AllStudents.Count == 0)
+{
+    <h2> No Students yet!</h2>
+}
+else
+{
+        <h2 class="text-center">Students</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Faculty Number
+                    </th>
+                    <th>
+                        Major
+                    </th>
+                    <th>
+                        First Name
+                    </th>
+                    <th>
+                        Last Name
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+        @foreach (var item in Model.AllStudents)
+         {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FacultyNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Major)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastName)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { item.ID }) |
+                        @Html.ActionLink("Delete", "Delete", new { item.ID })
+                    </td>
+                </tr>
+         }
+            </tbody>
+        </table>
+}
