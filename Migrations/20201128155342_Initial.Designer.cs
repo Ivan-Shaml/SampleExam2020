@@ -9,7 +9,7 @@ using SampleExam2020.Data;
 namespace SampleExam2020.Migrations
 {
     [DbContext(typeof(StudentsDbContext))]
-    [Migration("20201128121835_Initial")]
+    [Migration("20201128155342_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -28,15 +28,19 @@ namespace SampleExam2020.Migrations
                         .UseIdentityColumn();
 
                     b.Property<string>("FacultyNumber")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FirstName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Major")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
